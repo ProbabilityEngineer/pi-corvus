@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+*.log
+.DS_Store
+.env
+.pi/
+.turnlog/
+.clu/data.sqlite
+.clu/data.sqlite-wal
+.clu/data.sqlite-shm
+.clu/backups/
