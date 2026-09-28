@@ -1,21 +1,38 @@
 {
   "name": "pi-corvus",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
-  "description": "Experimental synchronized file context for Pi",
+  "description": "Experimental synchronized file context extension for Pi, inspired by the CORVUS paper",
+  "license": "MIT",
+  "author": "ProbabilityEngineer",
+  "homepage": "https://github.com/ProbabilityEngineer/pi-corvus#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProbabilityEngineer/pi-corvus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ProbabilityEngineer/pi-corvus/issues"
+  },
   "keywords": ["pi-package", "pi-extension"],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "files": [
+    "index.ts",
+    "README.md",
+    "V1-ACCEPTANCE.md",
+    "LICENSE"
+  ],
   "pi": {
     "extensions": ["./index.ts"]
   },
   "peerDependencies": {
     "@earendil-works/pi-agent-core": "*",
-    "@earendil-works/pi-ai": "*",
     "@earendil-works/pi-coding-agent": "*"
   },
   "devDependencies": {
     "@earendil-works/pi-agent-core": "0.87.1",
-    "@earendil-works/pi-ai": "0.87.1",
     "@earendil-works/pi-coding-agent": "0.87.1",
     "@types/node": "25.9.1",
     "typescript": "5.9.3",
