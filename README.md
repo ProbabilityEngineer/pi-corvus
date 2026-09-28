@@ -1,5 +1,7 @@
 # pi-corvus
 
+> One of my diet context engineering and workflow extensions. Explore the complete collection: <https://www.npmjs.com/~probabilityengineer>
+
 An experimental Pi extension inspired by the [CORVUS paper](https://arxiv.org/abs/2607.22711) CORVUS: Context Optimization and Reduction Via Underlying Synchronization for LLM Coding Agents by Mingwei Zheng, David OBrien, Siwei Cui, Pardis Pashakhanloo, Rajdeep Mukherjee, Myeongsoo Kim, Sachit Kuhar. This project is an independent implementation; it is not affiliated with or endorsed by the paper's authors.
 
 CORVUS leaves Pi's built-in `read` tool and its behavior unchanged. When the agent successfully reads an eligible whole text file, that file becomes synchronized: later model requests retain the historical read tool call and its paired result, replace the stale result body with a compact marker, and inject exactly one authoritative current snapshot for synchronized files. Failed refreshes fail open: the historical read body stays visible and no substitute snapshot is injected.
@@ -38,3 +40,23 @@ Commands: `/corvus status`, `/corvus clear`, `/corvus drop <path>`, `/corvus on`
 - The first small real coding comparison reported provider input tokens (including cache reads): baseline **8,638**, CORVUS **9,274**. This small run showed overhead, not savings. The crossover point and prompt-cache behavior remain to be characterized; no real-world token reduction is claimed.
 
 See [V1-ACCEPTANCE.md](V1-ACCEPTANCE.md) for the full acceptance scope and limits.
+
+## Citation
+
+This project is an independent implementation inspired by:
+
+> Mingwei Zheng, David OBrien, Siwei Cui, Pardis Pashakhanloo, Rajdeep Mukherjee, Myeongsoo Kim, and Sachit Kuhar.  
+> **CORVUS: Context Optimization and Reduction Via Underlying Synchronization for LLM Coding Agents.**  
+> *arXiv preprint arXiv:2607.22711*, 2026.  
+> https://arxiv.org/abs/2607.22711  
+> https://doi.org/10.48550/arXiv.2607.22711
+
+```bibtex
+@article{zheng2026corvus,
+  title={CORVUS: Context Optimization and Reduction Via Underlying Synchronization for LLM Coding Agents},
+  author={Zheng, Mingwei and OBrien, David and Cui, Siwei and Pashakhanloo, Pardis and Mukherjee, Rajdeep and Kim, Myeongsoo and Kuhar, Sachit},
+  journal={arXiv preprint arXiv:2607.22711},
+  year={2026},
+  doi={10.48550/arXiv.2607.22711},
+  url={https://arxiv.org/abs/2607.22711}
+}
