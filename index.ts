@@ -77,16 +77,18 @@ export async function synchronize(messages: AgentMessage[], state: State): Promi
 	if (!state.enabled || !state.files.length) return messages;
 	const replacements = new Map<string, { path: string; digest: string }>();
 	const ambiguous = new Set<string>();
-	const snapshots: { path: string; text: string }[] = [];
-	let bytes = 0;
+	const snapshots: string[] = [];
+	const prefix = "Current synchronized workspace files (request-time; authoritative for these paths; JSON-encoded content):\n";
+	let bytes = Buffer.byteLength(prefix) + 2; // JSON array delimiters.
 	// Most recently observed files have priority. Keep displayed order stable (oldest first).
 	for (const file of [...state.files].reverse()) {
 		const text = await snapshot(file.path);
 		if (text === undefined) continue;
-		const size = Buffer.byteLength(text);
+		const encoded = JSON.stringify({ path: file.path, content: text });
+		const size = Buffer.byteLength(encoded) + (snapshots.length ? 1 : 0);
 		if (bytes + size > MAX_REQUEST_BYTES) continue;
 		bytes += size;
-		snapshots.unshift({ path: file.path, text });
+		snapshots.unshift(encoded);
 		for (const observation of file.observations) {
 			if (ambiguous.has(observation.id)) continue;
 			if (replacements.has(observation.id)) {
@@ -114,9 +116,7 @@ export async function synchronize(messages: AgentMessage[], state: State): Promi
 	});
 	output.push({
 		role: "user", timestamp: Date.now(),
-		content: [{ type: "text", text: `Current synchronized workspace files (request-time; authoritative for these paths):\n${snapshots.map(
-			(s) => `\n--- ${s.path} (${Buffer.byteLength(s.text)} bytes) ---\n${s.text}\n--- end ${s.path} ---`,
-		).join("\n")}` }],
+		content: [{ type: "text", text: `${prefix}[${snapshots.join(",")}]` }],
 	});
 	return output;
 }
@@ -142,7 +142,14 @@ export default function corvus(pi: ExtensionAPI): void {
 			update({ op: "read", path: resolved, observation: { id: event.toolCallId, digest: digest(text) } });
 		} catch { /* fail open */ }
 	});
-	pi.on("context", async (event) => ({ messages: await synchronize(event.messages, state) }));
+	pi.on("context", async (event) => {
+		try {
+			return { messages: await synchronize(event.messages, state) };
+		} catch {
+			// A failed transform must not prevent the request from using Pi's original context.
+			return { messages: event.messages };
+		}
+	});
 	pi.registerCommand("corvus", {
 		description: "Control synchronized file context: status | clear | drop <path> | on | off",
 		handler: async (args, ctx) => {
