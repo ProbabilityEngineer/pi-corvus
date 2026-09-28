@@ -8,4 +8,4 @@ Successful unpaged, untruncated local UTF-8 reads of at most 64 KiB are register
 
 Run `npm test` for focused extension tests; `npm run check` for types; `npm run bench` for synthetic serialized-byte and Pi heuristic-token comparisons (not provider token accounting).
 
-**Acceptance:** V1 is not yet accepted. See [V1-ACCEPTANCE.md](V1-ACCEPTANCE.md) for validation, limits, and the controlled-session recommendation.
+**Acceptance:** V1 is accepted for supervised use with CORVUS as the sole context-transforming extension, but not for general extension composition or guaranteed token savings. See [V1-ACCEPTANCE.md](V1-ACCEPTANCE.md).
