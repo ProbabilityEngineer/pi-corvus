@@ -52,6 +52,53 @@ async function fixture() {
 }
 
 describe("CORVUS extension events and session persistence", () => {
+	it("keeps the failing stale-persistence request safe and recovers on reload", async () => {
+		const { path, original, session, app } = await fixture();
+		const persist = session._persist.bind(session);
+		session._persist = entry => {
+			if (entry.type === "custom" && entry.customType === "corvus-v1" &&
+				(entry.data as { op: string }).op === "stale") throw new Error("injected stale persistence failure");
+			persist(entry);
+		};
+		await writeFile(path, "CURRENT_B\n");
+		const raw = session.buildSessionContext().messages;
+		const safe = (await app.emit("context", { messages: raw }) as { messages: AgentMessage[] }).messages;
+		// Provider-visible authority, not merely an exception assertion.
+		expect(JSON.stringify(safe)).not.toContain(original.trim());
+		expect(JSON.stringify(safe)).toContain("superseded");
+		expect(JSON.stringify(safe)).toContain("CURRENT_B");
+		expect(rebuild(session.getBranch()).files[0].observations[0].stale).toBe(true);
+		const reloaded = SessionManager.open(session.getSessionFile()!);
+		expect(rebuild(reloaded.getBranch()).files[0].observations[0].stale).not.toBe(true);
+		const resumed = harness(reloaded);
+		await resumed.emit("session_start");
+		expect(JSON.stringify(await resumed.emit("context", { messages: reloaded.buildSessionContext().messages })))
+			.not.toContain(original.trim());
+		session._persist = persist;
+		await app.emit("context", { messages: raw });
+		// Release gate: retry must be reachable after reload, not just appended
+		// beneath an in-memory-only parent. This currently fails.
+		expect(rebuild(SessionManager.open(session.getSessionFile()!).getBranch()).files[0].observations[0].stale).toBe(true);
+	});
+	it("records the lost-retirement limitation when disk returns to A before reload", async () => {
+		const { path, original, session, app } = await fixture();
+		const persist = session._persist.bind(session);
+		session._persist = entry => {
+			if (entry.type === "custom" && entry.customType === "corvus-v1" &&
+				(entry.data as { op: string }).op === "stale") throw new Error("lost retirement");
+			persist(entry);
+		};
+		await writeFile(path, "B\n");
+		await app.emit("context", { messages: session.buildSessionContext().messages });
+		await writeFile(path, original);
+		const reload = SessionManager.open(session.getSessionFile()!);
+		const resumed = harness(reload);
+		await resumed.emit("session_start");
+		const raw = reload.buildSessionContext().messages;
+		// Observed limitation, not acceptance of weakened non-resurrection:
+		// the lost B transition is indistinguishable from unchanged A on disk.
+		expect((await resumed.emit("context", { messages: raw }) as { messages: AgentMessage[] }).messages).toBe(raw);
+	});
 	it("registers after successful complete reads; refreshes repeated reads and reconstructs on resume", async () => {
 		const { path, original, session, app } = await fixture();
 		expect(rebuild(session.getBranch()).files).toHaveLength(1);

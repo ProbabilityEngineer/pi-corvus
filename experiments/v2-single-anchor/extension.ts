@@ -52,7 +52,13 @@ function validAnchor(entry: Record<string, unknown>): Anchor | undefined {
 	};
 }
 
-function readSnapshots(messages: AgentMessage[]): Array<{ path: string; content: string }> {
+function isV1SnapshotTail(messages: AgentMessage[], sourceMessages?: AgentMessage[]): boolean {
+	return !!sourceMessages && messages.length === sourceMessages.length + 1 &&
+		messages.at(-1) !== sourceMessages.at(-1);
+}
+
+function readSnapshots(messages: AgentMessage[], sourceMessages?: AgentMessage[]): Array<{ path: string; content: string }> {
+	if (!isV1SnapshotTail(messages, sourceMessages)) return [];
 	const last = messages.at(-1);
 	if (!last || last.role !== "user" || !Array.isArray(last.content)) return [];
 	const text = last.content.length === 1 && last.content[0].type === "text" ? last.content[0].text : "";
@@ -63,6 +69,19 @@ function readSnapshots(messages: AgentMessage[]): Array<{ path: string; content:
 		return parsed.filter((item): item is { path: string; content: string } =>
 			!!item && typeof item === "object" && typeof item.path === "string" && typeof item.content === "string");
 	} catch { return []; }
+}
+
+function snapshotMessageIndex(messages: AgentMessage[], sourceMessages?: AgentMessage[]): number {
+	if (!isV1SnapshotTail(messages, sourceMessages)) return -1;
+	const last = messages.at(-1);
+	if (!last || last.role !== "user" || !Array.isArray(last.content) ||
+		last.content.length !== 1 || last.content[0].type !== "text" ||
+		!last.content[0].text.startsWith(SNAPSHOT_PREFIX)) return -1;
+	return messages.length - 1;
+}
+
+function encodeSnapshots(snapshots: Array<{ path: string; content: string }>): string {
+	return SNAPSHOT_PREFIX + JSON.stringify(snapshots);
 }
 
 function anchorsIn(ctx: ExtensionContext): Anchor[] {
@@ -87,6 +106,38 @@ function latestByPath(anchors: Anchor[]): Map<string, Anchor> {
 		if (!current || anchor.details.generation > current.details.generation) latest.set(anchor.details.path, anchor);
 	}
 	return latest;
+}
+
+export async function createAnchorDraft(
+	candidate: { path: string; content: string },
+	ctx: ExtensionContext,
+): Promise<SessionBoundaryDraft | undefined> {
+	try {
+		const { readFile, realpath } = await import("node:fs/promises");
+		const canonical = await realpath(candidate.path);
+		const bytes = await readFile(canonical);
+		const current = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+		if (canonical !== candidate.path || current !== candidate.content) return;
+		const anchors = anchorsIn(ctx).filter((a) => a.details.path === canonical);
+		const predecessor = anchors.at(-1);
+		const generation = (predecessor?.details.generation ?? 0) + 1;
+		return {
+			type: "custom_message",
+			customType: ANCHOR_TYPE,
+			content: current,
+			display: false,
+			details: {
+				schemaVersion: 1,
+				generation,
+				path: canonical,
+				contentSha256: (await import("node:crypto")).createHash("sha256").update(current).digest("hex"),
+				byteLength: bytes.length,
+				...(predecessor ? { supersedesAnchorEntryId: predecessor.entryId } : {}),
+			} satisfies AnchorDetails,
+		};
+	} catch {
+		return;
+	}
 }
 
 function hasFreshReadAfterAnchor(
@@ -118,9 +169,11 @@ export async function resolveV2aRequest(
 	state: ReturnType<typeof rebuild>,
 	ctx: ExtensionContext,
 	alreadySynchronized = false,
+	sourceMessages?: AgentMessage[],
 ): Promise<{ messages: AgentMessage[]; tailSnapshots: Array<{ path: string; content: string }> }> {
 	const v1 = alreadySynchronized ? messages : await synchronize(messages, state);
-	const tailSnapshots = readSnapshots(v1);
+	const source = alreadySynchronized ? sourceMessages : messages;
+	const tailSnapshots = readSnapshots(v1, source);
 	const anchors = anchorsIn(ctx);
 	if (anchors.length === 0 && tailSnapshots.length === 0) return { messages: v1, tailSnapshots };
 	const latest = latestByPath(anchors);
@@ -136,24 +189,32 @@ export async function resolveV2aRequest(
 		const disk = await import("node:fs/promises").then(({ readFile }) => readFile(d.path)
 			.then((bytes) => new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes))
 			.catch(() => undefined));
+		// Refresh failure is V1 fail-open: retain historical context rather than
+		// declaring a durable anchor stale based on an unavailable observation.
+		if (disk === undefined) continue;
 		const newerRead = active ? hasFreshReadAfterAnchor(messages, state, ctx, d.path, active) : false;
-		const stillAuthority = active?.details.generation === d.generation && disk !== undefined &&
+		const stillAuthority = active?.details.generation === d.generation &&
 			disk === textOf(message) && !newerRead;
 		if (!stillAuthority) {
 			output[i] = { ...message, content: SUPERSEDED };
 		}
 	}
-	// An active, exact durable anchor replaces the V1 tail, but only after exact
-	// content comparison. Hash metadata is never used as authority.
-	const filtered = tailSnapshots.length && [...latest.values()].some((anchor) => {
-		const snapshot = tailSnapshots.find((s) => s.path === anchor.details.path);
-		return snapshot?.content === anchor.content;
-	}) ? output.filter((m) => {
-		const txt = m.role === "user" && Array.isArray(m.content) && m.content[0]?.type === "text"
-			? m.content[0].text : "";
-		return !txt.startsWith(SNAPSHOT_PREFIX);
-	}) : output;
-	return { messages: filtered, tailSnapshots };
+	// Filter the combined V1 tail by path, not by entire message.
+	const snapshotIndex = snapshotMessageIndex(v1, source);
+	const coveredPaths = new Set([...latest.values()]
+		.filter((anchor) => tailSnapshots.some((snapshot) =>
+			snapshot.path === anchor.details.path && snapshot.content === anchor.content))
+		.map((anchor) => anchor.details.path));
+	const retained = tailSnapshots.filter((snapshot) => !coveredPaths.has(snapshot.path));
+	let filtered = output;
+	if (snapshotIndex >= 0 && coveredPaths.size > 0) {
+		if (retained.length === 0) filtered = output.filter((_, index) => index !== snapshotIndex);
+		else filtered[snapshotIndex] = {
+			...output[snapshotIndex],
+			content: [{ type: "text", text: encodeSnapshots(retained) }],
+		} as AgentMessage;
+	}
+	return { messages: filtered, tailSnapshots: retained };
 }
 
 export default function corvusV2a(pi: ExtensionAPI): void {
@@ -174,7 +235,7 @@ export default function corvusV2a(pi: ExtensionAPI): void {
 					const result = await handler(e, ctx) as { messages?: AgentMessage[] } | undefined;
 					if (!result?.messages) return result;
 					try {
-						const resolved = await resolveV2aRequest(result.messages, v1State, ctx, true);
+						const resolved = await resolveV2aRequest(result.messages, v1State, ctx, true, e.messages);
 						pending = resolved.tailSnapshots;
 						return { ...result, messages: resolved.messages };
 					} catch {
@@ -192,33 +253,7 @@ export default function corvusV2a(pi: ExtensionAPI): void {
 		}
 		const candidate = pending[0];
 		pending = [];
-		try {
-			const { readFile, realpath } = await import("node:fs/promises");
-			const canonical = await realpath(candidate.path);
-			const bytes = await readFile(canonical);
-			const current = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
-			if (canonical !== candidate.path || current !== candidate.content) return;
-			const anchors = anchorsIn(ctx).filter((a) => a.details.path === canonical);
-			const predecessor = anchors.at(-1);
-			const generation = (predecessor?.details.generation ?? 0) + 1;
-			const details: AnchorDetails = {
-				schemaVersion: 1,
-				generation,
-				path: canonical,
-				contentSha256: (await import("node:crypto")).createHash("sha256").update(current).digest("hex"),
-				byteLength: bytes.length,
-				...(predecessor ? { supersedesAnchorEntryId: predecessor.entryId } : {}),
-			};
-			const draft: SessionBoundaryDraft = {
-				type: "custom_message",
-				customType: ANCHOR_TYPE,
-				content: current,
-				display: false,
-				details,
-			};
-			return { entries: [draft] };
-		} catch {
-			return;
-		}
+		const draft = await createAnchorDraft(candidate, ctx);
+		return draft ? { entries: [draft] } : undefined;
 	});
 }

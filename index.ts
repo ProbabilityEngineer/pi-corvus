@@ -167,8 +167,24 @@ export async function synchronize(messages: AgentMessage[], state: State,
 
 export default function corvus(pi: ExtensionAPI): void {
 	let state = initial();
+	let pendingRetirements: Operation[] = [];
 	const update = (operation: Operation) => { applyOperation(state, operation); pi.appendEntry(ENTRY, operation); };
-	const restore = (ctx: ExtensionContext) => { state = rebuild(ctx.sessionManager.getBranch()); };
+	const persistRetirement = (operation: Operation): boolean => {
+		try { pi.appendEntry(ENTRY, operation); return true; }
+		catch (error) {
+			console.warn("CORVUS stale-retirement persistence failed; current request remains synchronized; retry pending", error);
+			return false;
+		}
+	};
+	const retire = (operation: Operation) => {
+		// Local non-resurrection must not depend on Pi's append durability.
+		applyOperation(state, operation);
+		if (!persistRetirement(operation)) pendingRetirements.push(operation);
+	};
+	const restore = (ctx: ExtensionContext) => {
+		state = rebuild(ctx.sessionManager.getBranch());
+		pendingRetirements = [];
+	};
 	pi.on("session_start", (_event, ctx) => restore(ctx));
 	pi.on("session_tree", (_event, ctx) => restore(ctx));
 	pi.on("tool_result", async (event, ctx) => {
@@ -188,7 +204,8 @@ export default function corvus(pi: ExtensionAPI): void {
 	});
 	pi.on("context", async (event) => {
 		try {
-			return { messages: await synchronize(event.messages, state, update) };
+			pendingRetirements = pendingRetirements.filter(operation => !persistRetirement(operation));
+			return { messages: await synchronize(event.messages, state, retire) };
 		} catch {
 			// A failed transform must not prevent the request from using Pi's original context.
 			return { messages: event.messages };
