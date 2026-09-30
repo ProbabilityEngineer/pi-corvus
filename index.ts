@@ -20,11 +20,12 @@ export const MAX_FILES = 12;
 export const MAX_FILE_BYTES = 64 * 1024;
 export const MAX_REQUEST_BYTES = 256 * 1024;
 const ENTRY = "corvus-v1";
-type Observation = { id: string; digest: string };
+type Observation = { id: string; digest: string; stale?: boolean };
 type FileState = { path: string; observations: Observation[] };
 type State = { enabled: boolean; files: FileState[] };
 type Operation = { op: "read"; path: string; observation: Observation } | { op: "drop"; path: string }
-	| { op: "clear" } | { op: "enabled"; value: boolean };
+	| { op: "clear" } | { op: "enabled"; value: boolean }
+	| { op: "stale"; path: string; ids: string[] };
 
 const digest = (text: string) => createHash("sha256").update(text).digest("hex");
 const initial = (): State => ({ enabled: true, files: [] });
@@ -33,7 +34,11 @@ export function applyOperation(state: State, operation: Operation): void {
 	if (operation.op === "clear") state.files = [];
 	else if (operation.op === "enabled") state.enabled = operation.value;
 	else if (operation.op === "drop") state.files = state.files.filter((f) => f.path !== operation.path);
-	else {
+	else if (operation.op === "stale") {
+		for (const observation of state.files.find(f => f.path === operation.path)?.observations ?? []) {
+			if (operation.ids.includes(observation.id)) observation.stale = true;
+		}
+	} else {
 		let file = state.files.find((f) => f.path === operation.path);
 		if (file) state.files = state.files.filter((f) => f !== file);
 		else file = { path: operation.path, observations: [] };
@@ -48,6 +53,7 @@ const valid = (value: unknown): value is Operation => {
 	const v = value as Record<string, unknown>;
 	return (v.op === "clear") || (v.op === "enabled" && typeof v.value === "boolean") ||
 		(v.op === "drop" && typeof v.path === "string") ||
+		(v.op === "stale" && typeof v.path === "string" && Array.isArray(v.ids) && v.ids.every(id => typeof id === "string")) ||
 		(v.op === "read" && typeof v.path === "string" && !!v.observation &&
 			typeof (v.observation as Observation).id === "string" &&
 			typeof (v.observation as Observation).digest === "string");
@@ -67,28 +73,71 @@ async function snapshot(path: string): Promise<string | undefined> {
 		if (!info.isFile() || info.size > MAX_FILE_BYTES) return;
 		const buffer = await readFile(path);
 		if (buffer.length > MAX_FILE_BYTES || buffer.includes(0)) return;
-		const text = new TextDecoder("utf-8", { fatal: true }).decode(buffer);
+		const text = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(buffer);
 		return text;
 	} catch { return; }
 }
 
 /** Returns original array on any global ambiguity; per-file refresh failures fail open. */
-export async function synchronize(messages: AgentMessage[], state: State): Promise<AgentMessage[]> {
+export async function synchronize(messages: AgentMessage[], state: State,
+	onStale: (operation: Operation) => void = operation => applyOperation(state, operation)): Promise<AgentMessage[]> {
 	if (!state.enabled || !state.files.length) return messages;
 	const replacements = new Map<string, { path: string; digest: string }>();
 	const ambiguous = new Set<string>();
 	const snapshots: string[] = [];
 	const prefix = "Current synchronized workspace files (request-time; authoritative for these paths; JSON-encoded content):\n";
+	// Only unique, paired, unmodified complete observations can supply authority.
+	const calls = new Map<string, string>();
+	const results = new Map<string, Extract<AgentMessage, { role: "toolResult" }> | undefined>();
+	const tracked = new Set<string>();
+	for (const file of state.files) for (const observation of file.observations) {
+		if (tracked.has(observation.id)) return messages;
+		tracked.add(observation.id);
+	}
+	for (const message of messages) {
+		if (message.role === "assistant") for (const block of message.content) {
+			if (block.type === "toolCall") {
+				if (calls.has(block.id) && tracked.has(block.id)) return messages;
+				calls.set(block.id, calls.has(block.id) ? "" : block.name);
+			}
+		}
+		if (message.role === "toolResult") {
+			if (results.has(message.toolCallId) && tracked.has(message.toolCallId)) return messages;
+			results.set(message.toolCallId, results.has(message.toolCallId) ? undefined : message);
+		}
+	}
+	const eligible = (observation: Observation) => {
+		const result = results.get(observation.id);
+		return calls.get(observation.id) === "read" && result?.toolName === "read" &&
+			!result.isError && result.content.length === 1 && result.content[0].type === "text" &&
+			digest(result.content[0].text) === observation.digest ? result.content[0].text : undefined;
+	};
+	const kept = new Set<string>();
 	let bytes = Buffer.byteLength(prefix) + 2; // JSON array delimiters.
 	// Most recently observed files have priority. Keep displayed order stable (oldest first).
 	for (const file of [...state.files].reverse()) {
 		const text = await snapshot(file.path);
 		if (text === undefined) continue;
+		// Keep the earliest observation in the trailing run of identical reads.
+		// Never promote an old observation across a later different/absent read.
+		let authority: Observation | undefined;
+		for (const observation of [...file.observations].reverse()) {
+			if (observation.stale || eligible(observation) !== text) break;
+			authority = observation;
+		}
 		const encoded = JSON.stringify({ path: file.path, content: text });
 		const size = Buffer.byteLength(encoded) + (snapshots.length ? 1 : 0);
-		if (bytes + size > MAX_REQUEST_BYTES) continue;
-		bytes += size;
-		snapshots.unshift(encoded);
+		if (authority) kept.add(authority.id);
+		else {
+			if (bytes + size > MAX_REQUEST_BYTES) continue;
+			bytes += size;
+			snapshots.unshift(encoded);
+		}
+		// Once an observation is known stale, never re-promote it at its old
+		// chronological position. A new read can establish fresh authority.
+		const stale = file.observations.filter(observation => !observation.stale &&
+			eligible(observation) !== undefined && eligible(observation) !== text);
+		if (stale.length) onStale({ op: "stale", path: file.path, ids: stale.map(observation => observation.id) });
 		for (const observation of file.observations) {
 			if (ambiguous.has(observation.id)) continue;
 			if (replacements.has(observation.id)) {
@@ -98,27 +147,22 @@ export async function synchronize(messages: AgentMessage[], state: State): Promi
 			} else replacements.set(observation.id, { path: file.path, digest: observation.digest });
 		}
 	}
-	if (!snapshots.length) return messages;
-	const calls = new Map<string, string>();
-	for (const message of messages) if (message.role === "assistant") {
-		for (const block of message.content) if (block.type === "toolCall" && replacements.has(block.id)) {
-			if (calls.has(block.id)) calls.set(block.id, "");
-			else calls.set(block.id, block.name);
-		}
-	}
+	let changed = false;
 	const output = messages.map((message) => {
 		if (message.role !== "toolResult" || message.toolName !== "read" ||
 			calls.get(message.toolCallId) !== "read") return message;
 		const target = replacements.get(message.toolCallId);
-		if (!target || message.isError || message.content.length !== 1 ||
+		if (!target || kept.has(message.toolCallId) || results.get(message.toolCallId) !== message ||
+			message.isError || message.content.length !== 1 ||
 			message.content[0].type !== "text" || digest(message.content[0].text) !== target.digest) return message;
-		return { ...message, content: [{ type: "text" as const, text: `[CORVUS synchronized read: ${target.path}; see current workspace snapshot below]` }] };
+		changed = true;
+		return { ...message, content: [{ type: "text" as const, text: `[CORVUS synchronized read: ${target.path}; superseded; use the authoritative current representation in this request]` }] };
 	});
-	output.push({
+	if (snapshots.length) output.push({
 		role: "user", timestamp: Date.now(),
 		content: [{ type: "text", text: `${prefix}[${snapshots.join(",")}]` }],
 	});
-	return output;
+	return changed || snapshots.length ? output : messages;
 }
 
 export default function corvus(pi: ExtensionAPI): void {
@@ -144,7 +188,7 @@ export default function corvus(pi: ExtensionAPI): void {
 	});
 	pi.on("context", async (event) => {
 		try {
-			return { messages: await synchronize(event.messages, state) };
+			return { messages: await synchronize(event.messages, state, update) };
 		} catch {
 			// A failed transform must not prevent the request from using Pi's original context.
 			return { messages: event.messages };

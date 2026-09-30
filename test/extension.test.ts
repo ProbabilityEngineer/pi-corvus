@@ -70,6 +70,22 @@ describe("CORVUS extension events and session persistence", () => {
 		expect(JSON.stringify(await resumed.emit("context", { messages: reopened.buildSessionContext().messages })))
 			.toContain("LATEST");
 	});
+	it("persists stale authority retirement across resume and A→B→A without rewriting raw reads", async () => {
+		const { path, original, session, app } = await fixture();
+		const prior = session.buildSessionContext().messages;
+		expect((await app.emit("context", { messages: prior }) as { messages: AgentMessage[] }).messages).toBe(prior);
+		await writeFile(path, "EXTERNAL_B\n");
+		await app.emit("context", { messages: prior });
+		expect(rebuild(session.getBranch()).files[0].observations[0].stale).toBe(true);
+		await writeFile(path, original);
+		const reopened = SessionManager.open(session.getSessionFile()!);
+		const resumed = harness(reopened);
+		await resumed.emit("session_start");
+		const out = (await resumed.emit("context", { messages: reopened.buildSessionContext().messages }) as { messages: AgentMessage[] }).messages;
+		expect(JSON.stringify(out[1])).toContain("CORVUS synchronized");
+		expect(out.filter(m => m.role === "user")).toHaveLength(1);
+		expect(JSON.stringify(session.buildSessionContext().messages)).toContain("HISTORICAL_READ");
+	});
 
 	it("rejects error, image, offset/limit, binary and over-limit observations", async () => {
 		const { path, session, app } = await fixture();
@@ -138,7 +154,7 @@ describe("CORVUS extension events and session persistence", () => {
 		const second = other((await app.emit("context", { messages }) as { messages: AgentMessage[] }).messages);
 		for (const output of [first, second]) {
 			expect(JSON.stringify(output).match(/OTHER_EXTENSION/g)).toHaveLength(1);
-			expect(JSON.stringify(output).match(/Current synchronized workspace files/g)).toHaveLength(1);
+			expect(JSON.stringify(output)).not.toContain("Current synchronized workspace files");
 			expect(JSON.stringify(output).match(/HISTORICAL_READ/g)).toHaveLength(1);
 		}
 	});

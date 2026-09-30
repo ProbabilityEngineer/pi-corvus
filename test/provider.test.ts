@@ -67,6 +67,30 @@ const request = (messages: AgentMessage[], target: Model<"openai-codex-responses
 };
 
 describe("Pi provider conversion of CORVUS context", () => {
+	it("preserves the provider prefix for unchanged observations and supplies one valid snapshot after change", async () => {
+		const { path, state, messages, old } = await fixture();
+		await writeFile(path, old);
+		const first = request(await synchronize(messages, state));
+		const nextMessages: AgentMessage[] = [...messages, { role: "user", content: "Follow-up", timestamp: 5 }];
+		const second = request(await synchronize(nextMessages, state));
+		expect(second.slice(0, first.length)).toEqual(first);
+		expect(JSON.stringify(second)).not.toContain("CORVUS synchronized");
+		expect(JSON.stringify(second)).not.toContain("Current synchronized workspace files");
+		await writeFile(path, "CURRENT_B");
+		for (let i = 0; i < 3; i++) {
+			const converted = request(await synchronize(nextMessages, state));
+			expect(JSON.stringify(converted).match(/CURRENT_B/g)).toHaveLength(1);
+			expect(JSON.stringify(converted)).not.toContain(old);
+			expect(converted.filter(i => i.type === "function_call_output").map(i => i.call_id)).toEqual(["call_read", "call_bash"]);
+			expect(JSON.stringify(converted)).not.toContain("No result provided");
+		}
+		await writeFile(path, old);
+		const returned = request(await synchronize(nextMessages, state));
+		const readOutput = returned.find(i => i.type === "function_call_output" && i.call_id === "call_read");
+		expect(JSON.stringify(readOutput)).toContain("CORVUS synchronized");
+		expect(JSON.stringify(returned).match(/OLD_READ/g)).toHaveLength(1);
+		expect(JSON.stringify(returned.at(-1))).toContain("Current synchronized workspace files");
+	});
 	it("keeps exact read/bash pairing, opaque reasoning and unrelated assistant content through Codex conversion", async () => {
 		const { state, messages, old, current } = await fixture();
 		const output = await synchronize(messages, state);

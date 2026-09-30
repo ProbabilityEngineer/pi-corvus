@@ -39,6 +39,8 @@ describe("CORVUS request-time synchronization", () => {
 		expect(out[2]).toEqual(messages[2]);
 		expect(messages[1]).toMatchObject({ content: [{ type: "text", text: "old body" }] });
 		expect(out.filter((m) => m.role === "toolResult").map((m) => m.toolCallId)).toEqual(["read-1", "bash-1"]);
+		const ambiguous = [...messages, messages[1]];
+		expect(await synchronize(ambiguous, s)).toBe(ambiguous);
 	});
 	it("fails open when deleted or oversized, and disabled mode preserves identity", async () => {
 		const { path, s, messages } = await fixture();
@@ -87,11 +89,12 @@ describe("CORVUS request-time synchronization", () => {
 			const path = join(dir, `${i}.txt`);
 			const text = String(i).repeat(MAX_FILE_BYTES - 100);
 			await writeFile(path, text);
-			applyOperation(s, { op: "read", path, observation: { id: `r${i}`, digest: hash(text) } });
+			const old = `old-${i}`;
+			applyOperation(s, { op: "read", path, observation: { id: `r${i}`, digest: hash(old) } });
 			messages.push({ role: "assistant", content: [{ type: "toolCall", id: `r${i}`, name: "read", arguments: { path } }],
 				provider: "openai", api: "openai-responses", model: "test", stopReason: "toolUse", timestamp: i } as unknown as AgentMessage);
 			messages.push({ role: "toolResult", toolCallId: `r${i}`, toolName: "read",
-				content: [{ type: "text", text }], isError: false, timestamp: i });
+				content: [{ type: "text", text: old }], isError: false, timestamp: i });
 		}
 		const out = await synchronize(messages, s);
 		const snapshots = out.at(-1);
@@ -103,5 +106,83 @@ describe("CORVUS request-time synchronization", () => {
 		expect(snapshotText).toContain("4".repeat(200));
 		expect(out[1]).toEqual(messages[1]);
 		expect(JSON.stringify(out[9])).toContain("CORVUS synchronized");
+	});
+	it("preserves unchanged authority without injecting, then refreshes external changes on every request", async () => {
+		const { path, s, messages } = await fixture("A", "A");
+		for (let i = 0; i < 3; i++) expect(await synchronize(messages, s)).toBe(messages);
+		await writeFile(path, "B");
+		const canonical = JSON.stringify(messages);
+		for (let i = 0; i < 3; i++) {
+			const out = await synchronize(messages, s);
+			expect(out[1]).not.toEqual(messages[1]);
+			expect(JSON.stringify(out.at(-1))).toContain('"content"');
+			const snapshot = out.at(-1);
+			if (snapshot?.role !== "user" || !Array.isArray(snapshot.content) || snapshot.content[0].type !== "text") throw new Error("missing snapshot");
+			expect(JSON.parse(snapshot.content[0].text.split("\n")[1])).toEqual([{ path, content: "B" }]);
+		}
+		expect(JSON.stringify(messages)).toBe(canonical);
+		// Returning to A must not re-promote a previously stale read at an old position.
+		await writeFile(path, "A");
+		const returned = await synchronize(messages, s);
+		expect(returned[1]).not.toEqual(messages[1]);
+		expect(returned.filter(m => m.role === "user")).toHaveLength(1);
+	});
+	it("keeps the earliest trailing identical read, but never resurrects A across a later B read", async () => {
+		const { path, s, messages } = await fixture("A", "A");
+		const append = (id: string, text: string) => {
+			applyOperation(s, { op: "read", path, observation: { id, digest: hash(text) } });
+			messages.push({ ...messages[0], content: [{ type: "toolCall", id, name: "read", arguments: { path } }] } as AgentMessage);
+			messages.push({ role: "toolResult", toolCallId: id, toolName: "read", content: [{ type: "text", text }], isError: false, timestamp: 4 });
+		};
+		append("r2", "A");
+		let out = await synchronize(messages, s);
+		expect(out[1]).toBe(messages[1]);
+		expect(JSON.stringify(out.at(-1))).toContain("CORVUS synchronized");
+		expect(out.filter(m => m.role === "user")).toHaveLength(0);
+		await writeFile(path, "B");
+		append("r3", "B");
+		out = await synchronize(messages, s);
+		expect(out.at(-1)).toBe(messages.at(-1));
+		expect(out.filter(m => m.role === "user")).toHaveLength(0);
+		await writeFile(path, "A");
+		out = await synchronize(messages, s);
+		expect(out[1]).not.toEqual(messages[1]);
+		expect(out.filter(m => m.role === "user")).toHaveLength(1);
+		append("r4", "A");
+		out = await synchronize(messages, s);
+		expect(out.at(-1)).toBe(messages.at(-1));
+		expect(out[1]).not.toEqual(messages[1]);
+		expect(out.filter(m => m.role === "user")).toHaveLength(0);
+	});
+	it("refreshes repeated edits and mixed files independently without promoting partial observations", async () => {
+		const { path, s, messages } = await fixture("A", "A");
+		const other = `${path}.other`;
+		await writeFile(other, "UNCHANGED");
+		applyOperation(s, { op: "read", path: other, observation: { id: "other", digest: hash("UNCHANGED") } });
+		messages.push({ ...messages[0], content: [{ type: "toolCall", id: "other", name: "read", arguments: { path: other } }] } as AgentMessage);
+		messages.push({ role: "toolResult", toolCallId: "other", toolName: "read", content: [{ type: "text", text: "UNCHANGED" }], isError: false, timestamp: 4 });
+		for (const content of ["B", "C"]) {
+			await writeFile(path, content);
+			const out = await synchronize(messages, s);
+			expect(out[1]).not.toEqual(messages[1]);
+			expect(out[4]).toBe(messages[4]);
+			expect(JSON.stringify(out.at(-1))).not.toContain("UNCHANGED");
+			expect(out.filter(m => m.role === "user")).toHaveLength(1);
+		}
+		await writeFile(path, "A plus more");
+		const out = await synchronize(messages, s);
+		expect(out[1]).not.toEqual(messages[1]);
+		expect(JSON.stringify(out.at(-1))).toContain("A plus more");
+	});
+	it("compares exact UTF-8 contents including BOM and line endings rather than trusting a digest alone", async () => {
+		const { path, s, messages } = await fixture("\uFEFFA\r\n", "\uFEFFA\r\n");
+		expect(await synchronize(messages, s)).toBe(messages);
+		await writeFile(path, "A\n");
+		const out = await synchronize(messages, s);
+		expect(out[1]).not.toEqual(messages[1]);
+		expect(out.filter(m => m.role === "user")).toHaveLength(1);
+		// The stored digest authenticates history, not equality with refreshed contents.
+		s.files[0].observations[0].digest = hash("A\n");
+		expect((await synchronize(messages, s))[1]).toBe(messages[1]); // untrusted history fails open
 	});
 });

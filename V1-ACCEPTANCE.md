@@ -1,5 +1,7 @@
 # CORVUS V1 acceptance disposition: CONTROLLED USE ACCEPTED; GENERAL COMPOSITION NOT ACCEPTED
 
+**Historical report:** the original implementation always replaced even unchanged observations. That behavior was incorrect. Its snapshot counts, benchmark numbers and economic results below describe that earlier implementation. See [V1-CORRECTION.md](V1-CORRECTION.md) for the corrected semantics and new measurements; unchanged current observations now remain intact.
+
 Validated against Pi 0.87.1 and live `openai-codex/gpt-6-luna`, without changing Pi core. Use only with CORVUS as the sole context-transforming extension; request-time elision is not a general replacement for Pi's canonical history.
 
 ## Live validation attempt (stopped before the read)
