@@ -1,0 +1,318 @@
+{
+  "first": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Current synchronized workspace files (request-time; authoritative for these paths; JSON-encoded content):\n[{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/a.ts\",\"content\":\"B1\"},{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/b.ts\",\"content\":\"B2\"},{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/c.ts\",\"content\":\"B3\"}]"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Read A; later edit discussions are historical."
+        }
+      ]
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_signed",
+      "summary": [],
+      "encrypted_content": "opaque-signature"
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "This is a historical read, followed by a command.",
+          "annotations": []
+        }
+      ],
+      "status": "completed",
+      "id": "msg_pi_3"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_read",
+      "call_id": "call_read",
+      "name": "read",
+      "arguments": "{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/a.ts\"}"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_read_bash",
+      "call_id": "call_read_bash",
+      "name": "bash",
+      "arguments": "{\"command\":\"true\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_read",
+      "output": "[CORVUS synchronized read: /var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/a.ts; superseded; use the authoritative current representation in this request]"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_read_bash",
+      "output": "UNCHANGED_COMMAND"
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_signed",
+      "summary": [],
+      "encrypted_content": "opaque-signature"
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "This is a historical read, followed by a command.",
+          "annotations": []
+        }
+      ],
+      "status": "completed",
+      "id": "msg_pi_6"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_b.ts",
+      "call_id": "call_b.ts",
+      "name": "read",
+      "arguments": "{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/b.ts\"}"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_b.ts_bash",
+      "call_id": "call_b.ts_bash",
+      "name": "bash",
+      "arguments": "{\"command\":\"true\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_b.ts",
+      "output": "[CORVUS synchronized read: /var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/b.ts; superseded; use the authoritative current representation in this request]"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_b.ts_bash",
+      "output": "UNCHANGED_COMMAND"
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_signed",
+      "summary": [],
+      "encrypted_content": "opaque-signature"
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "This is a historical read, followed by a command.",
+          "annotations": []
+        }
+      ],
+      "status": "completed",
+      "id": "msg_pi_9"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_c.ts",
+      "call_id": "call_c.ts",
+      "name": "read",
+      "arguments": "{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/c.ts\"}"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_c.ts_bash",
+      "call_id": "call_c.ts_bash",
+      "name": "bash",
+      "arguments": "{\"command\":\"true\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_c.ts",
+      "output": "[CORVUS synchronized read: /var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/c.ts; superseded; use the authoritative current representation in this request]"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_c.ts_bash",
+      "output": "UNCHANGED_COMMAND"
+    }
+  ],
+  "changed": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Current synchronized workspace files (request-time; authoritative for these paths; JSON-encoded content):\n[{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/a.ts\",\"content\":\"B1\"},{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/b.ts\",\"content\":\"C2\"},{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/c.ts\",\"content\":\"B3\"}]"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Read A; later edit discussions are historical."
+        }
+      ]
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_signed",
+      "summary": [],
+      "encrypted_content": "opaque-signature"
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "This is a historical read, followed by a command.",
+          "annotations": []
+        }
+      ],
+      "status": "completed",
+      "id": "msg_pi_3"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_read",
+      "call_id": "call_read",
+      "name": "read",
+      "arguments": "{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/a.ts\"}"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_read_bash",
+      "call_id": "call_read_bash",
+      "name": "bash",
+      "arguments": "{\"command\":\"true\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_read",
+      "output": "[CORVUS synchronized read: /var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/a.ts; superseded; use the authoritative current representation in this request]"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_read_bash",
+      "output": "UNCHANGED_COMMAND"
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_signed",
+      "summary": [],
+      "encrypted_content": "opaque-signature"
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "This is a historical read, followed by a command.",
+          "annotations": []
+        }
+      ],
+      "status": "completed",
+      "id": "msg_pi_6"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_b.ts",
+      "call_id": "call_b.ts",
+      "name": "read",
+      "arguments": "{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/b.ts\"}"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_b.ts_bash",
+      "call_id": "call_b.ts_bash",
+      "name": "bash",
+      "arguments": "{\"command\":\"true\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_b.ts",
+      "output": "[CORVUS synchronized read: /var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/b.ts; superseded; use the authoritative current representation in this request]"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_b.ts_bash",
+      "output": "UNCHANGED_COMMAND"
+    },
+    {
+      "type": "reasoning",
+      "id": "rs_signed",
+      "summary": [],
+      "encrypted_content": "opaque-signature"
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "This is a historical read, followed by a command.",
+          "annotations": []
+        }
+      ],
+      "status": "completed",
+      "id": "msg_pi_9"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_c.ts",
+      "call_id": "call_c.ts",
+      "name": "read",
+      "arguments": "{\"path\":\"/var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/c.ts\"}"
+    },
+    {
+      "type": "function_call",
+      "id": "fc_c.ts_bash",
+      "call_id": "call_c.ts_bash",
+      "name": "bash",
+      "arguments": "{\"command\":\"true\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_c.ts",
+      "output": "[CORVUS synchronized read: /var/folders/8f/6rmd5tsj5vx54jlysxqdyf300000gn/T/corvus-early-offline-UECWB7/c.ts; superseded; use the authoritative current representation in this request]"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_c.ts_bash",
+      "output": "UNCHANGED_COMMAND"
+    }
+  ]
+}

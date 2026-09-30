@@ -1,0 +1,2732 @@
+{
+  "tail": {
+    "requests": 19,
+    "stages": {
+      "A": {
+        "cacheRead": [
+          8704,
+          8704,
+          8704
+        ],
+        "totals": {
+          "totalInput": 28776,
+          "cacheRead": 26112,
+          "uncached": 2664,
+          "output": 18,
+          "cost": 0.0005365200000000001,
+          "inputBytes": 118905,
+          "contextBytes": 123468
+        },
+        "exactCompletePrefixStable": false,
+        "rows": [
+          {
+            "label": "A-1",
+            "prompt": "Without tools, report current version in a.ts. The file has not changed. Reply only its value.",
+            "response": "V0",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9559,
+            "cacheRead": 8704,
+            "uncached": 855,
+            "output": 6,
+            "cost": 0.00017554000000000002,
+            "inputBytes": 39273,
+            "contextBytes": 40327,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 7,
+              "hash": "14c4971836a4069ccd4a000c59205b7df8298aa1169149c763d94b248230c08f",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 40327,
+                "inputBytes": 39273,
+                "payloadBytes": 44092,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 3,
+                "firstDifferingPath": "$.input.3",
+                "firstDifferingByte": 41450,
+                "snapshots": [],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "08c8f5aadd92afd76c2c3f33857e9396081e1b585a5254b94822357c7bb8a8be",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "A-2",
+            "prompt": "Without tools, report current version in a.ts. The file has not changed. Reply only its value.",
+            "response": "V0",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9592,
+            "cacheRead": 8704,
+            "uncached": 888,
+            "output": 6,
+            "cost": 0.00017884000000000002,
+            "inputBytes": 39635,
+            "contextBytes": 41156,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 9,
+              "hash": "e22f0c7dbce41b7aeccb8293a47f50072dbe9c75752063e1611f37ad4de089f0",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 41156,
+                "inputBytes": 39635,
+                "payloadBytes": 44454,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 5,
+                "firstDifferingPath": "$.input.5",
+                "firstDifferingByte": 41832,
+                "snapshots": [],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "08c8f5aadd92afd76c2c3f33857e9396081e1b585a5254b94822357c7bb8a8be",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "A-3",
+            "prompt": "Without tools, report current version in a.ts. The file has not changed. Reply only its value.",
+            "response": "V0",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9625,
+            "cacheRead": 8704,
+            "uncached": 921,
+            "output": 6,
+            "cost": 0.00018214000000000001,
+            "inputBytes": 39997,
+            "contextBytes": 41985,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 11,
+              "hash": "244a2e48e5eed6039db41564ab02aaba09382687f1b6bce8a1770aac8a496c91",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 41985,
+                "inputBytes": 39997,
+                "payloadBytes": 44816,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 7,
+                "firstDifferingPath": "$.input.7",
+                "firstDifferingByte": 42194,
+                "snapshots": [],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "08c8f5aadd92afd76c2c3f33857e9396081e1b585a5254b94822357c7bb8a8be",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      },
+      "B": {
+        "cacheRead": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "totals": {
+          "totalInput": 39240,
+          "cacheRead": 0,
+          "uncached": 39240,
+          "output": 24,
+          "cost": 0.003936,
+          "inputBytes": 167626,
+          "contextBytes": 180172
+        },
+        "exactCompletePrefixStable": false,
+        "rows": [
+          {
+            "label": "B-1",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9753,
+            "cacheRead": 0,
+            "uncached": 9753,
+            "output": 6,
+            "cost": 0.0009783,
+            "inputBytes": 41269,
+            "contextBytes": 43744,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 13,
+              "hash": "f3f44b899f097fa23803bb06ea010bcd76c5e4096258e13ade02b46a6b6568e4",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 43744,
+                "inputBytes": 41269,
+                "payloadBytes": 46088,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 2,
+                "firstDifferingPath": "$.input.2.output",
+                "firstDifferingByte": 3018,
+                "snapshots": [
+                  {
+                    "index": 11,
+                    "itemHash": "5053abd1f81ec83eac85a295f07619765ab4a4be9fb13ffbb1165e9473690947",
+                    "prefixHash": "7c6f3830abaca0f5fc196369616ed51dcafbc83498532caedd2c49d0c8dea839",
+                    "precedingItems": 11,
+                    "completePrefixHash": "ea1471f73c9296ae24dead582dadaa4d095c19357e01cb9cfd79dbb41fdce0ea",
+                    "precedingBytes": 2150,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "B-2",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9791,
+            "cacheRead": 0,
+            "uncached": 9791,
+            "output": 6,
+            "cost": 0.0009821,
+            "inputBytes": 41694,
+            "contextBytes": 44612,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 15,
+              "hash": "b8edccba0c70a824eb6cb23bb0b8c50d25eacb4dba15085c233c5692a8296406",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 44612,
+                "inputBytes": 41694,
+                "payloadBytes": 46513,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 11,
+                "firstDifferingPath": "$.input.11.role",
+                "firstDifferingByte": 4712,
+                "snapshots": [
+                  {
+                    "index": 13,
+                    "itemHash": "5053abd1f81ec83eac85a295f07619765ab4a4be9fb13ffbb1165e9473690947",
+                    "prefixHash": "5855f7d85adabf649d2e8d9d8f87d6ec3482915eb4e61a4f4e1bef7436966285",
+                    "precedingItems": 13,
+                    "completePrefixHash": "aa2072f8c852b4dd51fec69dbbfeea6af942942f62de5524e8e62853d5f730aa",
+                    "precedingBytes": 2575,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "B-3",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9829,
+            "cacheRead": 0,
+            "uncached": 9829,
+            "output": 6,
+            "cost": 0.0009859,
+            "inputBytes": 42119,
+            "contextBytes": 45480,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 17,
+              "hash": "4beaca3958741f690e4af53f6499b59fddac93bf98bed5452d7387575d09a66a",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 45480,
+                "inputBytes": 42119,
+                "payloadBytes": 46938,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 13,
+                "firstDifferingPath": "$.input.13.role",
+                "firstDifferingByte": 5137,
+                "snapshots": [
+                  {
+                    "index": 15,
+                    "itemHash": "5053abd1f81ec83eac85a295f07619765ab4a4be9fb13ffbb1165e9473690947",
+                    "prefixHash": "c569c16c395bb0a30d2b33c84d53e6a0e906f16ead3d8bc1b3a332cb9db191e3",
+                    "precedingItems": 15,
+                    "completePrefixHash": "881692f3008a8597e3c7ebec836ceef411f8284bea19e7820143c272742edfca",
+                    "precedingBytes": 3000,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "B-4",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9867,
+            "cacheRead": 0,
+            "uncached": 9867,
+            "output": 6,
+            "cost": 0.0009897,
+            "inputBytes": 42544,
+            "contextBytes": 46336,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 19,
+              "hash": "1236c1c9c70428a71ef4deeef445acfa01a5fd619a3923023ca3ee97ea2ae36e",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 46336,
+                "inputBytes": 42544,
+                "payloadBytes": 47363,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 15,
+                "firstDifferingPath": "$.input.15.role",
+                "firstDifferingByte": 5562,
+                "snapshots": [
+                  {
+                    "index": 17,
+                    "itemHash": "5053abd1f81ec83eac85a295f07619765ab4a4be9fb13ffbb1165e9473690947",
+                    "prefixHash": "ef7c37d34ae48347ae6dcf3ebf8aacd6093462881f603894c15d23084b4a4c38",
+                    "precedingItems": 17,
+                    "completePrefixHash": "0536135f54c915da185993a85e36f67a710008adb3de4ead8fa78f40ea6b59a7",
+                    "precedingBytes": 3425,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      },
+      "C": {
+        "cacheRead": [
+          0,
+          0,
+          0
+        ],
+        "totals": {
+          "totalInput": 29835,
+          "cacheRead": 0,
+          "uncached": 29835,
+          "output": 18,
+          "cost": 0.0029925,
+          "inputBytes": 130218,
+          "contextBytes": 144228
+        },
+        "exactCompletePrefixStable": false,
+        "rows": [
+          {
+            "label": "C-1",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V2",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9906,
+            "cacheRead": 0,
+            "uncached": 9906,
+            "output": 6,
+            "cost": 0.0009936,
+            "inputBytes": 42975,
+            "contextBytes": 47198,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 21,
+              "hash": "282c9f1830f7a0262778a15e7e4d084d462d08c24898ea65adfc7d9f6bddd017",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 47198,
+                "inputBytes": 42975,
+                "payloadBytes": 47794,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 17,
+                "firstDifferingPath": "$.input.17.role",
+                "firstDifferingByte": 5987,
+                "snapshots": [
+                  {
+                    "index": 19,
+                    "itemHash": "c09c477be359759514cf8faa959c077648a453d9b6698b2c76aa48b0d3e0f273",
+                    "prefixHash": "0cacbba0ae1a517525d8612fb4639ef98572e7266e2acbb19a6f388e01ac6a0c",
+                    "precedingItems": 19,
+                    "completePrefixHash": "136f5dede5e7b7b200a1e4715e056dc82922f71091544ff39b8e19ee52b58bcc",
+                    "precedingBytes": 3856,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "C-2",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V2",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9945,
+            "cacheRead": 0,
+            "uncached": 9945,
+            "output": 6,
+            "cost": 0.0009975000000000001,
+            "inputBytes": 43406,
+            "contextBytes": 48072,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 23,
+              "hash": "0f3a1aa9f491bb0a38b7207b3dc90e349926d48845bab29e7e3dd4a5d979e984",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 48072,
+                "inputBytes": 43406,
+                "payloadBytes": 48225,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 19,
+                "firstDifferingPath": "$.input.19.role",
+                "firstDifferingByte": 6418,
+                "snapshots": [
+                  {
+                    "index": 21,
+                    "itemHash": "c09c477be359759514cf8faa959c077648a453d9b6698b2c76aa48b0d3e0f273",
+                    "prefixHash": "c53507ec292b313c907af9111ae3a23f230afd670fb82f11d85957d6e9d0422b",
+                    "precedingItems": 21,
+                    "completePrefixHash": "f9d5c93517838dd59fa4ebc50d90ccecb2f292555e1f86930764d6c122b6f75f",
+                    "precedingBytes": 4287,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "C-3",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V2",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9984,
+            "cacheRead": 0,
+            "uncached": 9984,
+            "output": 6,
+            "cost": 0.0010014,
+            "inputBytes": 43837,
+            "contextBytes": 48958,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 25,
+              "hash": "974e6077f64d0073097b9728a08ba40532e3d0c442de372defb2048d13327c83",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 48958,
+                "inputBytes": 43837,
+                "payloadBytes": 48656,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 21,
+                "firstDifferingPath": "$.input.21.role",
+                "firstDifferingByte": 6849,
+                "snapshots": [
+                  {
+                    "index": 23,
+                    "itemHash": "c09c477be359759514cf8faa959c077648a453d9b6698b2c76aa48b0d3e0f273",
+                    "prefixHash": "04cf96d757ca640cae0b195843f7eec6d565aa14acfb196ccc1bec34caf9bd2d",
+                    "precedingItems": 23,
+                    "completePrefixHash": "3f859867988abde4bfb5d0267c71fd7c3e90f130dac8b0b432cf52b5bd9a558e",
+                    "precedingBytes": 4718,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      },
+      "D": {
+        "cacheRead": [
+          0,
+          0,
+          0
+        ],
+        "totals": {
+          "totalInput": 30186,
+          "cacheRead": 0,
+          "uncached": 30186,
+          "output": 18,
+          "cost": 0.0030276,
+          "inputBytes": 134097,
+          "contextBytes": 152052
+        },
+        "exactCompletePrefixStable": false,
+        "rows": [
+          {
+            "label": "D-1",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V3",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10023,
+            "cacheRead": 0,
+            "uncached": 10023,
+            "output": 6,
+            "cost": 0.0010053,
+            "inputBytes": 44268,
+            "contextBytes": 49820,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 27,
+              "hash": "c5870197ffe032a738f8e31b9634eaa3dcb5d5b9be687aad7f1f22cb39e6243d",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 49820,
+                "inputBytes": 44268,
+                "payloadBytes": 49087,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 23,
+                "firstDifferingPath": "$.input.23.role",
+                "firstDifferingByte": 7280,
+                "snapshots": [
+                  {
+                    "index": 25,
+                    "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                    "prefixHash": "222da53ec44bef3643cd608cbe75576675c46526dc59145778b26c2f46f833bb",
+                    "precedingItems": 25,
+                    "completePrefixHash": "c996638cd9856bc0f7e92bfbb0fa0c1136ddfacd326e9758d939fea5e7af6cf1",
+                    "precedingBytes": 5149,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "D-2",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V3",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10062,
+            "cacheRead": 0,
+            "uncached": 10062,
+            "output": 6,
+            "cost": 0.0010092,
+            "inputBytes": 44699,
+            "contextBytes": 50684,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 29,
+              "hash": "e183b8d6c77586aa75cac265ef6978e905b657c240e7382cd0c4698343a5bae1",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 50684,
+                "inputBytes": 44699,
+                "payloadBytes": 49518,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 25,
+                "firstDifferingPath": "$.input.25.role",
+                "firstDifferingByte": 7711,
+                "snapshots": [
+                  {
+                    "index": 27,
+                    "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                    "prefixHash": "79cc8be9bd9a2f594a9adf29317b908ee0f462afc519eabf25a5b7f2cbedbd21",
+                    "precedingItems": 27,
+                    "completePrefixHash": "04bf9bd7f2a468526d2e568d1208709f6cfd36d33644ccbe7f297da9f0ffd79f",
+                    "precedingBytes": 5580,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "D-3",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V3",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10101,
+            "cacheRead": 0,
+            "uncached": 10101,
+            "output": 6,
+            "cost": 0.0010131,
+            "inputBytes": 45130,
+            "contextBytes": 51548,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 31,
+              "hash": "7a6afb550bddf39635d96d6f8a487ac5389cabdd625dbc9f483869ca1158cdd9",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 51548,
+                "inputBytes": 45130,
+                "payloadBytes": 49949,
+                "reminders": [],
+                "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+                "firstDifferingItem": 27,
+                "firstDifferingPath": "$.input.27.role",
+                "firstDifferingByte": 8142,
+                "snapshots": [
+                  {
+                    "index": 29,
+                    "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                    "prefixHash": "2878c76240340878cfd8b634d705652e5470eecde9ebbca48720b3d3f19a014d",
+                    "precedingItems": 29,
+                    "completePrefixHash": "7849a2aedcfa67e9620b568bc7be4d1bdf742e5861f371e917f1082dc1811ed6",
+                    "precedingBytes": 6011,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                        "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assertions": {
+      "canonicalNoSnapshot": true,
+      "canonicalNoReminder": true,
+      "originalReadStillComplete": true,
+      "preservedCanonicalPrefixes": true,
+      "allCurrentAuthoritiesUnique": true,
+      "pairingValid": true,
+      "noFollowupReads": true,
+      "lateReminderExact": true,
+      "primaryC": "V2",
+      "historicalAnswer": "V0",
+      "originalAnswerAvailableOnFailedRequest": true
+    },
+    "canonicalSha": "90f5d3af62390cb4c1e5d7082794755e3672f030d8bb7234a3e426d3dae40582",
+    "finalInputSha": "34fba3e4747f577ffc7dc2f213fdbd8305b16bcf9ad784bfe5e80fb851cc8e3f",
+    "transitions": [
+      {
+        "label": "B-1",
+        "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+        "response": "V1",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 9753,
+        "cacheRead": 0,
+        "uncached": 9753,
+        "output": 6,
+        "cost": 0.0009783,
+        "inputBytes": 41269,
+        "contextBytes": 43744,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 13,
+          "hash": "f3f44b899f097fa23803bb06ea010bcd76c5e4096258e13ade02b46a6b6568e4",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 43744,
+            "inputBytes": 41269,
+            "payloadBytes": 46088,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 2,
+            "firstDifferingPath": "$.input.2.output",
+            "firstDifferingByte": 3018,
+            "snapshots": [
+              {
+                "index": 11,
+                "itemHash": "5053abd1f81ec83eac85a295f07619765ab4a4be9fb13ffbb1165e9473690947",
+                "prefixHash": "7c6f3830abaca0f5fc196369616ed51dcafbc83498532caedd2c49d0c8dea839",
+                "precedingItems": 11,
+                "completePrefixHash": "ea1471f73c9296ae24dead582dadaa4d095c19357e01cb9cfd79dbb41fdce0ea",
+                "precedingBytes": 2150,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "C-1",
+        "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+        "response": "V2",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 9906,
+        "cacheRead": 0,
+        "uncached": 9906,
+        "output": 6,
+        "cost": 0.0009936,
+        "inputBytes": 42975,
+        "contextBytes": 47198,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 21,
+          "hash": "282c9f1830f7a0262778a15e7e4d084d462d08c24898ea65adfc7d9f6bddd017",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 47198,
+            "inputBytes": 42975,
+            "payloadBytes": 47794,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 17,
+            "firstDifferingPath": "$.input.17.role",
+            "firstDifferingByte": 5987,
+            "snapshots": [
+              {
+                "index": 19,
+                "itemHash": "c09c477be359759514cf8faa959c077648a453d9b6698b2c76aa48b0d3e0f273",
+                "prefixHash": "0cacbba0ae1a517525d8612fb4639ef98572e7266e2acbb19a6f388e01ac6a0c",
+                "precedingItems": 19,
+                "completePrefixHash": "136f5dede5e7b7b200a1e4715e056dc82922f71091544ff39b8e19ee52b58bcc",
+                "precedingBytes": 3856,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "D-1",
+        "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+        "response": "V3",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10023,
+        "cacheRead": 0,
+        "uncached": 10023,
+        "output": 6,
+        "cost": 0.0010053,
+        "inputBytes": 44268,
+        "contextBytes": 49820,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 27,
+          "hash": "c5870197ffe032a738f8e31b9634eaa3dcb5d5b9be687aad7f1f22cb39e6243d",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 49820,
+            "inputBytes": 44268,
+            "payloadBytes": 49087,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 23,
+            "firstDifferingPath": "$.input.23.role",
+            "firstDifferingByte": 7280,
+            "snapshots": [
+              {
+                "index": 25,
+                "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                "prefixHash": "222da53ec44bef3643cd608cbe75576675c46526dc59145778b26c2f46f833bb",
+                "precedingItems": 25,
+                "completePrefixHash": "c996638cd9856bc0f7e92bfbb0fa0c1136ddfacd326e9758d939fea5e7af6cf1",
+                "precedingBytes": 5149,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      }
+    ],
+    "chronology": [
+      {
+        "label": "chronology-old-current",
+        "prompt": "Earlier in this conversation the file was V1 and your replies said V1; that discussion is historical. Without tools, reply JSON with keys oldBVersion and currentVersion.",
+        "response": "{\"oldBVersion\":\"V1\",\"currentVersion\":\"V3\"}",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10148,
+        "cacheRead": 0,
+        "uncached": 10148,
+        "output": 18,
+        "cost": 0.0010238,
+        "inputBytes": 45567,
+        "contextBytes": 52418,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 33,
+          "hash": "e65ba9b27e90a70e4bd529affdfc105b79a7ff48440e31d487db7ae5d807f87e",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 52418,
+            "inputBytes": 45567,
+            "payloadBytes": 50386,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 29,
+            "firstDifferingPath": "$.input.29.role",
+            "firstDifferingByte": 8573,
+            "snapshots": [
+              {
+                "index": 31,
+                "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                "prefixHash": "1e91e343fd0a411330eecf315631d1b66c7706b295226c9fa24ea35a8e93fb83",
+                "precedingItems": 31,
+                "completePrefixHash": "b7e5b8b02d8b0c3aea2f1fdcd013ee85cb8baed990cad22fd8b278391401a2e7",
+                "precedingBytes": 6448,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "chronology-B-C",
+        "prompt": "Compare the historical external transition from B to C, not the latest file. Without tools, reply JSON with keys changedFrom, changedTo, currentVersion.",
+        "response": "{\"changedFrom\":\"V1\",\"changedTo\":\"V2\",\"currentVersion\":\"V3\"}",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10203,
+        "cacheRead": 0,
+        "uncached": 10203,
+        "output": 23,
+        "cost": 0.0010318,
+        "inputBytes": 46035,
+        "contextBytes": 53332,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 35,
+          "hash": "b8a317104c0ae1872ddeb3773f9cb8083ec7b0121c801abcf893da20b11304ae",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 53332,
+            "inputBytes": 46035,
+            "payloadBytes": 50854,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 31,
+            "firstDifferingPath": "$.input.31.role",
+            "firstDifferingByte": 9010,
+            "snapshots": [
+              {
+                "index": 33,
+                "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                "prefixHash": "abf21b4cc5c72cadc9655342e5781d39694c8cd09c55872d67f757a0061d81c3",
+                "precedingItems": 33,
+                "completePrefixHash": "7eb80e91f190199dbab40d691e9be05d561333d36c6a70c302e31d0987ff95c4",
+                "precedingBytes": 6916,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "chronology-instruction",
+        "prompt": "The edit to C changed V1 to V2. Your old answers V1 and V2 describe past states. A new unrelated formatting instruction applies: without tools reply exactly PREFIX:<current file version>:SUFFIX.",
+        "response": "PREFIX:V3:SUFFIX",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10275,
+        "cacheRead": 0,
+        "uncached": 10275,
+        "output": 11,
+        "cost": 0.001033,
+        "inputBytes": 46566,
+        "contextBytes": 54298,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 37,
+          "hash": "f690a40a7955fd70ccd3ddbce53daed37041d96f220b157abe17c6226d2526b2",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 54298,
+            "inputBytes": 46566,
+            "payloadBytes": 51385,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 33,
+            "firstDifferingPath": "$.input.33.role",
+            "firstDifferingByte": 9478,
+            "snapshots": [
+              {
+                "index": 35,
+                "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                "prefixHash": "0d4ecfa2abdaa8fe8fd0a50ec2619aa5f59e9374f101ac76f2d76b5ced452694",
+                "precedingItems": 35,
+                "completePrefixHash": "4c34594a7641539cf47be36e4cc42c28e6dc2bb4bd569172b8c975bf750c798d",
+                "precedingBytes": 7447,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "chronology-old-only",
+        "prompt": "What version did the original model-issued read observe, before the external updates? This is a historical question, not a current-state question. Without tools, reply only that old value.",
+        "response": "V0",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10328,
+        "cacheRead": 0,
+        "uncached": 10328,
+        "output": 6,
+        "cost": 0.0010358000000000001,
+        "inputBytes": 47036,
+        "contextBytes": 55202,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 39,
+          "hash": "0ac675b49bfa84c6bff8f5e1d185b50aaf1d19b1934545dcdac8a430536173f9",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 55202,
+            "inputBytes": 47036,
+            "payloadBytes": 51855,
+            "reminders": [],
+            "stableFieldsHash": "0d3bdd1d69925ed941f0a0a54e4f4a71029e6c7aeae57676528872aaa4f865f1",
+            "firstDifferingItem": 35,
+            "firstDifferingPath": "$.input.35.role",
+            "firstDifferingByte": 10009,
+            "snapshots": [
+              {
+                "index": 37,
+                "itemHash": "2bf7c3c4a2e67fbff569bcc152467d66b18cfc13fc24c46b8225c4863aac8f75",
+                "prefixHash": "77291d03c47af87b3a1fdd212f33dc1820b3553f5c28fc3fa3586f752f54071c",
+                "precedingItems": 37,
+                "completePrefixHash": "070b8184e7edaa1a90e34976f0ff2bf583883a5e37ee70a05a327762065c8fe6",
+                "precedingBytes": 7917,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/tail/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      }
+    ]
+  },
+  "temporal": {
+    "requests": 19,
+    "stages": {
+      "A": {
+        "cacheRead": [
+          8704,
+          8704,
+          8704
+        ],
+        "totals": {
+          "totalInput": 28776,
+          "cacheRead": 26112,
+          "uncached": 2664,
+          "output": 18,
+          "cost": 0.0005365200000000001,
+          "inputBytes": 118887,
+          "contextBytes": 123492
+        },
+        "exactCompletePrefixStable": false,
+        "rows": [
+          {
+            "label": "A-1",
+            "prompt": "Without tools, report current version in a.ts. The file has not changed. Reply only its value.",
+            "response": "V0",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9559,
+            "cacheRead": 8704,
+            "uncached": 855,
+            "output": 6,
+            "cost": 0.00017554000000000002,
+            "inputBytes": 39267,
+            "contextBytes": 40335,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 7,
+              "hash": "adeee28dbfe828abcfbb5237bb58f5d31734ef23e992d8291712e999d949671b",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 40335,
+                "inputBytes": 39267,
+                "payloadBytes": 44090,
+                "reminders": [],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 3,
+                "firstDifferingPath": "$.input.3",
+                "firstDifferingByte": 41454,
+                "snapshots": [],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "08c8f5aadd92afd76c2c3f33857e9396081e1b585a5254b94822357c7bb8a8be",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "A-2",
+            "prompt": "Without tools, report current version in a.ts. The file has not changed. Reply only its value.",
+            "response": "V0",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9592,
+            "cacheRead": 8704,
+            "uncached": 888,
+            "output": 6,
+            "cost": 0.00017884000000000002,
+            "inputBytes": 39629,
+            "contextBytes": 41164,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 9,
+              "hash": "16e25a24358c55378aa318a94a1f18ac1a3c3d513cf90f108bd398514b4234bd",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 41164,
+                "inputBytes": 39629,
+                "payloadBytes": 44452,
+                "reminders": [],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 5,
+                "firstDifferingPath": "$.input.5",
+                "firstDifferingByte": 41830,
+                "snapshots": [],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "08c8f5aadd92afd76c2c3f33857e9396081e1b585a5254b94822357c7bb8a8be",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "A-3",
+            "prompt": "Without tools, report current version in a.ts. The file has not changed. Reply only its value.",
+            "response": "V0",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9625,
+            "cacheRead": 8704,
+            "uncached": 921,
+            "output": 6,
+            "cost": 0.00018214000000000001,
+            "inputBytes": 39991,
+            "contextBytes": 41993,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 11,
+              "hash": "384b20cde507be90f23efa489fa67ee0762b4d2e30d363250f44dcf31cd40044",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 41993,
+                "inputBytes": 39991,
+                "payloadBytes": 44814,
+                "reminders": [],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 7,
+                "firstDifferingPath": "$.input.7",
+                "firstDifferingByte": 42192,
+                "snapshots": [],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "08c8f5aadd92afd76c2c3f33857e9396081e1b585a5254b94822357c7bb8a8be",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      },
+      "B": {
+        "cacheRead": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "totals": {
+          "totalInput": 39484,
+          "cacheRead": 0,
+          "uncached": 39484,
+          "output": 24,
+          "cost": 0.0039604,
+          "inputBytes": 169190,
+          "contextBytes": 181798
+        },
+        "exactCompletePrefixStable": true,
+        "rows": [
+          {
+            "label": "B-1",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9814,
+            "cacheRead": 0,
+            "uncached": 9814,
+            "output": 6,
+            "cost": 0.0009844,
+            "inputBytes": 41660,
+            "contextBytes": 44157,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 13,
+              "hash": "479a03ccb8171073b7267a55d194f9ff8b4aa0395e47072a75c9664e3760f8ec",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 44157,
+                "inputBytes": 41660,
+                "payloadBytes": 46483,
+                "reminders": [
+                  {
+                    "index": 11,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 0,
+                "firstDifferingPath": "$.input.0.content.0.text",
+                "firstDifferingByte": 2620,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "96ee1b8118988f8e90fc207c28dd61518171ae7bdcc79592304f3ed27e5eefda",
+                    "prefixHash": "77e7b8863e532f058c49aee439799f23f89b75970f77ffa572bfed7cfcb47492",
+                    "precedingItems": 0,
+                    "completePrefixHash": "25341c94b533c1304505c5e0a06c33d1e015985721b7e5ea69df96efb4889967",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "B-2",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9852,
+            "cacheRead": 0,
+            "uncached": 9852,
+            "output": 6,
+            "cost": 0.0009882,
+            "inputBytes": 42085,
+            "contextBytes": 45025,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 15,
+              "hash": "0ac462d87d43c3a54cca9c31f0125c1a1caed91c51854841db174fd41444c822",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 45025,
+                "inputBytes": 42085,
+                "payloadBytes": 46908,
+                "reminders": [
+                  {
+                    "index": 13,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 11,
+                "firstDifferingPath": "$.input.11.content.0.text",
+                "firstDifferingByte": 43673,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "96ee1b8118988f8e90fc207c28dd61518171ae7bdcc79592304f3ed27e5eefda",
+                    "prefixHash": "77e7b8863e532f058c49aee439799f23f89b75970f77ffa572bfed7cfcb47492",
+                    "precedingItems": 0,
+                    "completePrefixHash": "25341c94b533c1304505c5e0a06c33d1e015985721b7e5ea69df96efb4889967",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "B-3",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9890,
+            "cacheRead": 0,
+            "uncached": 9890,
+            "output": 6,
+            "cost": 0.000992,
+            "inputBytes": 42510,
+            "contextBytes": 45881,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 17,
+              "hash": "e7a0d4b90d791b25c9f9e80a9923cca06b9159563fd4110cf4d37ad65e631a77",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 45881,
+                "inputBytes": 42510,
+                "payloadBytes": 47333,
+                "reminders": [
+                  {
+                    "index": 15,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 13,
+                "firstDifferingPath": "$.input.13.content.0.text",
+                "firstDifferingByte": 44098,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "96ee1b8118988f8e90fc207c28dd61518171ae7bdcc79592304f3ed27e5eefda",
+                    "prefixHash": "77e7b8863e532f058c49aee439799f23f89b75970f77ffa572bfed7cfcb47492",
+                    "precedingItems": 0,
+                    "completePrefixHash": "25341c94b533c1304505c5e0a06c33d1e015985721b7e5ea69df96efb4889967",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "B-4",
+            "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V1",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9928,
+            "cacheRead": 0,
+            "uncached": 9928,
+            "output": 6,
+            "cost": 0.0009958,
+            "inputBytes": 42935,
+            "contextBytes": 46735,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 19,
+              "hash": "dfc24e06e94f4a31f376c8d6b56d92b533d38c0ae7b672c752be3471fef1025b",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 46735,
+                "inputBytes": 42935,
+                "payloadBytes": 47758,
+                "reminders": [
+                  {
+                    "index": 17,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 15,
+                "firstDifferingPath": "$.input.15.content.0.text",
+                "firstDifferingByte": 44523,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "96ee1b8118988f8e90fc207c28dd61518171ae7bdcc79592304f3ed27e5eefda",
+                    "prefixHash": "77e7b8863e532f058c49aee439799f23f89b75970f77ffa572bfed7cfcb47492",
+                    "precedingItems": 0,
+                    "completePrefixHash": "25341c94b533c1304505c5e0a06c33d1e015985721b7e5ea69df96efb4889967",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      },
+      "C": {
+        "cacheRead": [
+          0,
+          9728,
+          9728
+        ],
+        "totals": {
+          "totalInput": 30018,
+          "cacheRead": 19456,
+          "uncached": 10562,
+          "output": 18,
+          "cost": 0.0012597600000000002,
+          "inputBytes": 131391,
+          "contextBytes": 145390
+        },
+        "exactCompletePrefixStable": true,
+        "rows": [
+          {
+            "label": "C-1",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V2",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 9967,
+            "cacheRead": 0,
+            "uncached": 9967,
+            "output": 6,
+            "cost": 0.0009997,
+            "inputBytes": 43366,
+            "contextBytes": 47597,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 21,
+              "hash": "6281e63b937b03c074e6e3bcb08569fd11a04254d742b8fd9f11aa3395bdfed5",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 47597,
+                "inputBytes": 43366,
+                "payloadBytes": 48189,
+                "reminders": [
+                  {
+                    "index": 19,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 0,
+                "firstDifferingPath": "$.input.0.content.0.text",
+                "firstDifferingByte": 2845,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "6a644651e6ac27a2c86cde78e9809450ef175f216a39d30e7aa2daa5cb9e1bce",
+                    "prefixHash": "a56e01a34ff90628604278f7b593391646d4648e3f7a9a0b636ca1f45d844b34",
+                    "precedingItems": 0,
+                    "completePrefixHash": "84d5c8072b55eda34de5b7f85bebfb54854756b42056529d8c701c48fbabda5a",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "C-2",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V2",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10006,
+            "cacheRead": 9728,
+            "uncached": 278,
+            "output": 6,
+            "cost": 0.00012808,
+            "inputBytes": 43797,
+            "contextBytes": 48459,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 23,
+              "hash": "bb6e34630a4f00cb415eb55b6678f4d81b16f1f2d7fc4cd89738fa629ad348f5",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 48459,
+                "inputBytes": 43797,
+                "payloadBytes": 48620,
+                "reminders": [
+                  {
+                    "index": 21,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 19,
+                "firstDifferingPath": "$.input.19.content.0.text",
+                "firstDifferingByte": 45373,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "6a644651e6ac27a2c86cde78e9809450ef175f216a39d30e7aa2daa5cb9e1bce",
+                    "prefixHash": "a56e01a34ff90628604278f7b593391646d4648e3f7a9a0b636ca1f45d844b34",
+                    "precedingItems": 0,
+                    "completePrefixHash": "84d5c8072b55eda34de5b7f85bebfb54854756b42056529d8c701c48fbabda5a",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "C-3",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V2",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10045,
+            "cacheRead": 9728,
+            "uncached": 317,
+            "output": 6,
+            "cost": 0.00013198000000000002,
+            "inputBytes": 44228,
+            "contextBytes": 49334,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 25,
+              "hash": "cf1e959e3ff50ba12e509c4eb7675d69780d752c5f9c4d7d101447f4f1d8f5a8",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 49334,
+                "inputBytes": 44228,
+                "payloadBytes": 49051,
+                "reminders": [
+                  {
+                    "index": 23,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 21,
+                "firstDifferingPath": "$.input.21.content.0.text",
+                "firstDifferingByte": 45804,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "6a644651e6ac27a2c86cde78e9809450ef175f216a39d30e7aa2daa5cb9e1bce",
+                    "prefixHash": "a56e01a34ff90628604278f7b593391646d4648e3f7a9a0b636ca1f45d844b34",
+                    "precedingItems": 0,
+                    "completePrefixHash": "84d5c8072b55eda34de5b7f85bebfb54854756b42056529d8c701c48fbabda5a",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      },
+      "D": {
+        "cacheRead": [
+          0,
+          9728,
+          9728
+        ],
+        "totals": {
+          "totalInput": 30369,
+          "cacheRead": 19456,
+          "uncached": 10913,
+          "output": 18,
+          "cost": 0.0012948599999999999,
+          "inputBytes": 135270,
+          "contextBytes": 153322
+        },
+        "exactCompletePrefixStable": true,
+        "rows": [
+          {
+            "label": "D-1",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V3",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10084,
+            "cacheRead": 0,
+            "uncached": 10084,
+            "output": 6,
+            "cost": 0.0010114,
+            "inputBytes": 44659,
+            "contextBytes": 50235,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 27,
+              "hash": "914b6c88252b3c946777dbe93743747af74693aa520ab6a2ca38066dac27ee00",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 50235,
+                "inputBytes": 44659,
+                "payloadBytes": 49482,
+                "reminders": [
+                  {
+                    "index": 25,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 0,
+                "firstDifferingPath": "$.input.0.content.0.text",
+                "firstDifferingByte": 2845,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                    "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                    "precedingItems": 0,
+                    "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "D-2",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V3",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10123,
+            "cacheRead": 9728,
+            "uncached": 395,
+            "output": 6,
+            "cost": 0.00013978,
+            "inputBytes": 45090,
+            "contextBytes": 51099,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 29,
+              "hash": "37534008a94fb553fa8d491014b595f970b8ead24880deedd2726808d30a09f3",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 51099,
+                "inputBytes": 45090,
+                "payloadBytes": 49913,
+                "reminders": [
+                  {
+                    "index": 27,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 25,
+                "firstDifferingPath": "$.input.25.content.0.text",
+                "firstDifferingByte": 46666,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                    "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                    "precedingItems": 0,
+                    "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          },
+          {
+            "label": "D-3",
+            "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+            "response": "V3",
+            "correct": true,
+            "errors": [],
+            "requests": 1,
+            "totalInput": 10162,
+            "cacheRead": 9728,
+            "uncached": 434,
+            "output": 6,
+            "cost": 0.00014368,
+            "inputBytes": 45521,
+            "contextBytes": 51988,
+            "reads": 0,
+            "canonicalAudit": {
+              "messages": 31,
+              "hash": "9d86d09c397d87393ef3076831c7d95b568e4cfda0d104c390a37c2f7ecbf3a6",
+              "preservedPrior": true,
+              "noSynthetic": true
+            },
+            "captures": [
+              {
+                "contextBytes": 51988,
+                "inputBytes": 45521,
+                "payloadBytes": 50344,
+                "reminders": [
+                  {
+                    "index": 29,
+                    "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                    "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+                  }
+                ],
+                "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+                "firstDifferingItem": 27,
+                "firstDifferingPath": "$.input.27.content.0.text",
+                "firstDifferingByte": 47097,
+                "snapshots": [
+                  {
+                    "index": 0,
+                    "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                    "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                    "precedingItems": 0,
+                    "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                    "precedingBytes": 2,
+                    "files": [
+                      {
+                        "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                        "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                        "bytes": 38000
+                      }
+                    ]
+                  }
+                ],
+                "authorities": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "currentBytes": 38000,
+                    "copies": 1,
+                    "staleBodies": 0
+                  }
+                ],
+                "allOutputsPaired": true,
+                "uniqueOutputs": true,
+                "repairPresent": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assertions": {
+      "canonicalNoSnapshot": true,
+      "canonicalNoReminder": true,
+      "originalReadStillComplete": true,
+      "preservedCanonicalPrefixes": true,
+      "allCurrentAuthoritiesUnique": true,
+      "pairingValid": true,
+      "noFollowupReads": true,
+      "lateReminderExact": true,
+      "primaryC": "V2",
+      "historicalAnswer": "V3",
+      "originalAnswerAvailableOnFailedRequest": true
+    },
+    "canonicalSha": "a4cea5eff16682b098f47f09038217726f60aa904efaa3b91148b418203c0ef8",
+    "finalInputSha": "44f76cead8a3b7674f9b4614699fed6117a9ad4591e2598b0e3d2822afb5aa3f",
+    "transitions": [
+      {
+        "label": "B-1",
+        "prompt": "The file was externally updated before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+        "response": "V1",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 9814,
+        "cacheRead": 0,
+        "uncached": 9814,
+        "output": 6,
+        "cost": 0.0009844,
+        "inputBytes": 41660,
+        "contextBytes": 44157,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 13,
+          "hash": "479a03ccb8171073b7267a55d194f9ff8b4aa0395e47072a75c9664e3760f8ec",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 44157,
+            "inputBytes": 41660,
+            "payloadBytes": 46483,
+            "reminders": [
+              {
+                "index": 11,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 0,
+            "firstDifferingPath": "$.input.0.content.0.text",
+            "firstDifferingByte": 2620,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "96ee1b8118988f8e90fc207c28dd61518171ae7bdcc79592304f3ed27e5eefda",
+                "prefixHash": "77e7b8863e532f058c49aee439799f23f89b75970f77ffa572bfed7cfcb47492",
+                "precedingItems": 0,
+                "completePrefixHash": "25341c94b533c1304505c5e0a06c33d1e015985721b7e5ea69df96efb4889967",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "1fdaf056a2099787dde952fa8e5cd43545004530945242581ec9feddb4cee8e5",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "C-1",
+        "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+        "response": "V2",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 9967,
+        "cacheRead": 0,
+        "uncached": 9967,
+        "output": 6,
+        "cost": 0.0009997,
+        "inputBytes": 43366,
+        "contextBytes": 47597,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 21,
+          "hash": "6281e63b937b03c074e6e3bcb08569fd11a04254d742b8fd9f11aa3395bdfed5",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 47597,
+            "inputBytes": 43366,
+            "payloadBytes": 48189,
+            "reminders": [
+              {
+                "index": 19,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 0,
+            "firstDifferingPath": "$.input.0.content.0.text",
+            "firstDifferingByte": 2845,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "6a644651e6ac27a2c86cde78e9809450ef175f216a39d30e7aa2daa5cb9e1bce",
+                "prefixHash": "a56e01a34ff90628604278f7b593391646d4648e3f7a9a0b636ca1f45d844b34",
+                "precedingItems": 0,
+                "completePrefixHash": "84d5c8072b55eda34de5b7f85bebfb54854756b42056529d8c701c48fbabda5a",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "35b6580fcb331aab3bcac85f5ff7323cac768ccd0ed33cb8e04aa18779919ae7",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "D-1",
+        "prompt": "The file was externally updated again before this series. Without tools, report its current version from authoritative synchronized contents. Reply only its value.",
+        "response": "V3",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10084,
+        "cacheRead": 0,
+        "uncached": 10084,
+        "output": 6,
+        "cost": 0.0010114,
+        "inputBytes": 44659,
+        "contextBytes": 50235,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 27,
+          "hash": "914b6c88252b3c946777dbe93743747af74693aa520ab6a2ca38066dac27ee00",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 50235,
+            "inputBytes": 44659,
+            "payloadBytes": 49482,
+            "reminders": [
+              {
+                "index": 25,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 0,
+            "firstDifferingPath": "$.input.0.content.0.text",
+            "firstDifferingByte": 2845,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                "precedingItems": 0,
+                "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      }
+    ],
+    "chronology": [
+      {
+        "label": "chronology-old-current",
+        "prompt": "Earlier in this conversation the file was V1 and your replies said V1; that discussion is historical. Without tools, reply JSON with keys oldBVersion and currentVersion.",
+        "response": "{\"oldBVersion\":\"V1\",\"currentVersion\":\"V3\"}",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10209,
+        "cacheRead": 9728,
+        "uncached": 481,
+        "output": 18,
+        "cost": 0.00015438000000000002,
+        "inputBytes": 45958,
+        "contextBytes": 52883,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 33,
+          "hash": "cfd66217bf4c16120eae28ed42c3ba02eed146fd5d4f064b7fc3075fc616e387",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 52883,
+            "inputBytes": 45958,
+            "payloadBytes": 50781,
+            "reminders": [
+              {
+                "index": 31,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 29,
+            "firstDifferingPath": "$.input.29.content.0.text",
+            "firstDifferingByte": 47528,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                "precedingItems": 0,
+                "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "chronology-B-C",
+        "prompt": "Compare the historical external transition from B to C, not the latest file. Without tools, reply JSON with keys changedFrom, changedTo, currentVersion.",
+        "response": "{\"changedFrom\":\"V1\",\"changedTo\":\"V2\",\"currentVersion\":\"V3\"}",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10264,
+        "cacheRead": 9728,
+        "uncached": 536,
+        "output": 23,
+        "cost": 0.00016238,
+        "inputBytes": 46426,
+        "contextBytes": 53822,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 35,
+          "hash": "db613f745a92d5225b27fddeaa2bb5a3183644b55a7fa3535ceb4bbb64cd3b0c",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 53822,
+            "inputBytes": 46426,
+            "payloadBytes": 51249,
+            "reminders": [
+              {
+                "index": 33,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 31,
+            "firstDifferingPath": "$.input.31.content.0.text",
+            "firstDifferingByte": 47959,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                "precedingItems": 0,
+                "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "chronology-instruction",
+        "prompt": "The edit to C changed V1 to V2. Your old answers V1 and V2 describe past states. A new unrelated formatting instruction applies: without tools reply exactly PREFIX:<current file version>:SUFFIX.",
+        "response": "PREFIX:V3:SUFFIX",
+        "correct": true,
+        "errors": [],
+        "requests": 1,
+        "totalInput": 10336,
+        "cacheRead": 9728,
+        "uncached": 608,
+        "output": 11,
+        "cost": 0.00016358000000000003,
+        "inputBytes": 46957,
+        "contextBytes": 54799,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 37,
+          "hash": "c8cedd24aba3b8ffaa50e8e8ffb0ce923b192e19867a108c68e528bf7e70f561",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 54799,
+            "inputBytes": 46957,
+            "payloadBytes": 51780,
+            "reminders": [
+              {
+                "index": 35,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 33,
+            "firstDifferingPath": "$.input.33.content.0.text",
+            "firstDifferingByte": 48444,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                "precedingItems": 0,
+                "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      },
+      {
+        "label": "chronology-old-only",
+        "prompt": "What version did the original model-issued read observe, before the external updates? This is a historical question, not a current-state question. Without tools, reply only that old value.",
+        "response": "V3",
+        "correct": false,
+        "errors": [
+          "semantic"
+        ],
+        "requests": 1,
+        "totalInput": 10389,
+        "cacheRead": 9728,
+        "uncached": 661,
+        "output": 6,
+        "cost": 0.00016638000000000002,
+        "inputBytes": 47427,
+        "contextBytes": 55740,
+        "reads": 0,
+        "canonicalAudit": {
+          "messages": 39,
+          "hash": "74a5bbce987bfda11e91e95da9c86ffcb85f928ea92df542a39416a211a86097",
+          "preservedPrior": true,
+          "noSynthetic": true
+        },
+        "captures": [
+          {
+            "contextBytes": 55740,
+            "inputBytes": 47427,
+            "payloadBytes": 52250,
+            "reminders": [
+              {
+                "index": 37,
+                "text": "[CORVUS temporal-authority reminder] The CORVUS workspace snapshot earlier in this request was refreshed for this request and represents current filesystem state for synchronized paths. Canonical conversation positioned after that snapshot may describe older states; historical discussion does not supersede the current snapshot.",
+                "hash": "af91875cd674fd5dbb571c0cb93bce763718d2a617d3f1f9a2befa5a1bb7461e"
+              }
+            ],
+            "stableFieldsHash": "91a29c6d4826e9939c14fd44dbcc6a8a92c15b656cfce9ea34328964f9559f08",
+            "firstDifferingItem": 35,
+            "firstDifferingPath": "$.input.35.content.0.text",
+            "firstDifferingByte": 48933,
+            "snapshots": [
+              {
+                "index": 0,
+                "itemHash": "0b98bc206a2ff754745346fc7a4bbd00e1fef15404847a8feb2af17e3844bd8b",
+                "prefixHash": "bad103edf6f63dde74b4908dc9731815ad2df6beccbbcecd41f35f99c2795311",
+                "precedingItems": 0,
+                "completePrefixHash": "4fc4c193e0f1e5e79dc0f66b1e05161ddc00930fb458d2fcd2db37b7abf004e1",
+                "precedingBytes": 2,
+                "files": [
+                  {
+                    "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                    "hash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                    "bytes": 38000
+                  }
+                ]
+              }
+            ],
+            "authorities": [
+              {
+                "path": "/private/tmp/corvus-temporal-experiment.aZmuwB/temporal/a.ts",
+                "currentHash": "26b3f4d3d342ac7a2287d2d90a557c2f29268bccd4a44a6d5aefcc5a8b3f14bc",
+                "currentBytes": 38000,
+                "copies": 1,
+                "staleBodies": 0
+              }
+            ],
+            "allOutputsPaired": true,
+            "uniqueOutputs": true,
+            "repairPresent": false
+          }
+        ]
+      }
+    ]
+  }
+}
